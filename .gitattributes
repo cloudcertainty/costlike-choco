@@ -1,0 +1,8 @@
+# Store and check out text as LF everywhere, whatever core.autocrlf says. The Windows
+# runner writes CRLF (Set-Content), so without this every AU bump would also show every
+# line of the files it touched as changed.
+* text=auto eol=lf
+
+*.png   binary
+*.nupkg binary
+*.exe   binary

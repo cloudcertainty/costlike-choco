@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>costlike</id>
+    <version>0.10.0</version>
+    <packageSourceUrl>https://github.com/cloudcertainty/costlike-choco</packageSourceUrl>
+    <owners>KamranBiglari</owners>
+    <title>CostLike (Install)</title>
+    <authors>Cloud Certainty OU</authors>
+    <projectUrl>https://costlike.com</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cloudcertainty/costlike-choco@main/icons/costlike.png</iconUrl>
+    <copyright>Copyright (c) 2026 Cloud Certainty OU</copyright>
+    <licenseUrl>https://costlike.com/terms/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://docs.costlike.com/</docsUrl>
+    <tags>costlike cloud cost finops aws azure gcp hetzner github cost-explorer mcp desktop</tags>
+    <summary>CostLike - your whole infrastructure bill, in one window.</summary>
+    <description><![CDATA[
+CostLike is a desktop app for cloud cost management across AWS, Azure,
+Google Cloud, Hetzner Cloud and GitHub. Every account, every service, one
+window - and your cost data never leaves your machine.
+
+* **Cost Explorer** reports against any set of accounts, with grouping,
+  filters, small multiples and drill-down. Every chart is also a table and
+  a CSV.
+* **A local cache**, so the same question is never paid for twice:
+  re-slicing a report you already ran is free.
+* **Govern** - budgets, anomalies, forecasts and local alert rules.
+* **Allocate** - tag coverage, virtual tags, cost categories and unit
+  economics.
+* **Built-in MCP server** for Claude Desktop and other MCP clients, bound to
+  127.0.0.1 and protected by a bearer token.
+* No runtime to install, and nothing to sign in to on the Free plan.
+
+## Package parameters
+
+* `/CurrentUser` - install for the current user only, instead of for all
+  users (the default).
+
+Example:
+
+```
+choco install costlike --params "'/CurrentUser'"
+```
+
+## Notes
+
+* The installer is downloaded from costlike.com at install time and verified
+  with pinned SHA256 checksums. See VERIFICATION.txt for details.
+* ARM64 Windows gets the native ARM64 build; every other 64-bit Windows gets
+  the x64 build. There is no 32-bit build.
+* Uninstalling leaves your local database and settings in place, because the
+  cached cost history cost real money to build.
+* CostLike is proprietary software. By installing it you accept the CostLike
+  End User Licence Agreement, included in this package as LICENSE.txt.
+]]></description>
+    <releaseNotes>https://costlike.com/download/</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

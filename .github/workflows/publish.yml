@@ -1,0 +1,120 @@
+name: Update & publish costlike
+
+on:
+  schedule:
+    # Daily at ~06:17 UTC. Adjust to whatever fits your release cadence.
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'CostLike version to pin (e.g. "v0.10.0" or "0.10.0"). Leave blank to use the latest release on costlike.com.'
+        required: false
+        default: ''
+      publish:
+        description: 'Push the resulting nupkg to the Chocolatey community feed.'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-costlike
+  cancel-in-progress: false
+
+jobs:
+  update-and-publish:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Install Chocolatey-AU
+        run: Install-Module -Name Chocolatey-AU -Force -Scope CurrentUser
+
+      - name: Run AU update
+        id: au
+        working-directory: costlike
+        env:
+          COSTLIKE_VERSION: ${{ github.event.inputs.version }}
+        run: ./update.ps1
+
+      - name: Detect changes
+        id: changes
+        run: |
+          $status  = git status --porcelain
+          $changed = [bool]$status
+          "changed=$($changed.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          $ver = (Select-Xml -Path costlike/costlike.nuspec -XPath '//*[local-name()="version"]').Node.InnerText
+          "version=$ver" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          Write-Host "Current nuspec version: $ver"
+          Write-Host "Working tree changed:   $changed"
+
+      - name: Commit version bump
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git add -A
+          git commit -m "costlike: bump to ${{ steps.changes.outputs.version }}"
+          git push
+
+      - name: Create & push git tag
+        if: >-
+          (github.event_name == 'schedule' && steps.changes.outputs.changed == 'true') ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.publish == 'true')
+        run: |
+          $tag = "v${{ steps.changes.outputs.version }}"
+          $existing = git ls-remote --tags origin "refs/tags/$tag"
+          if ($existing) {
+            Write-Host "Tag $tag already exists on origin, skipping."
+          } else {
+            git tag -a $tag -m "costlike $tag"
+            git push origin $tag
+          }
+
+      - name: Pack nupkg
+        if: >-
+          (github.event_name == 'schedule' && steps.changes.outputs.changed == 'true') ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.publish == 'true')
+        working-directory: costlike
+        run: choco pack
+
+      - name: Push to Chocolatey community
+        if: >-
+          (github.event_name == 'schedule' && steps.changes.outputs.changed == 'true') ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.publish == 'true')
+        working-directory: costlike
+        env:
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+        run: |
+          if (-not $env:CHOCO_API_KEY) {
+            throw "CHOCO_API_KEY secret is not set. Add it under Settings > Secrets and variables > Actions."
+          }
+
+          $nupkg = Get-ChildItem -Filter 'costlike.*.nupkg' |
+                   Sort-Object LastWriteTime -Descending |
+                   Select-Object -First 1 -ExpandProperty FullName
+          if (-not $nupkg) { throw "No costlike.*.nupkg found to push." }
+          Write-Host "Pushing $nupkg"
+
+          choco apikey add --source=https://push.chocolatey.org/ --api-key="$env:CHOCO_API_KEY" --confirm
+          choco push $nupkg --source=https://push.chocolatey.org/
+
+      - name: Upload nupkg artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: costlike-nupkg
+          path: costlike/*.nupkg
+          if-no-files-found: ignore

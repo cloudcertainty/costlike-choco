@@ -1,0 +1,15 @@
+# Chocolatey build artifacts produced by `choco pack` and Chocolatey-AU
+*.nupkg
+*.nuspec.bak
+*.nupkg.bak
+
+# Chocolatey-AU local cache / state
+.au/
+_au_/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

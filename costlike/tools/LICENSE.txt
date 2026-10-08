@@ -1,0 +1,168 @@
+COSTLIKE END USER LICENCE AGREEMENT
+
+Effective 26 September 2026
+
+This End User Licence Agreement ("Agreement") is between you (the individual, or the
+organisation on whose behalf you install the software, "you") and Cloud Certainty OU,
+Sepapaja tn 6, 15551 Tallinn, Estonia ("we", "us"). It governs your use of the CostLike
+desktop application, including its installers, updates and documentation (the
+"Software").
+
+By installing, copying or using the Software you accept this Agreement. If you do not
+accept it, do not install or use the Software.
+
+
+1. LICENCE
+
+1.1 The Software is licensed, not sold. Subject to this Agreement, we grant you a
+    non-exclusive, non-transferable, non-sublicensable licence to install and use the
+    Software for your internal business or personal purposes.
+
+1.2 The scope of the licence depends on the plan you use:
+    (a) Free - on the conditions published at https://costlike.com/pricing/ at the
+        time you use it, including its limit on the cloud spend it may be used with;
+    (b) Paid plans (Starter, Team and Business, and any plan agreed with you
+        individually) - for the number of users, spend limit and subscription term of
+        your plan, for as long as the subscription is paid. When a subscription ends,
+        the Free conditions apply.
+    If your order and this Agreement conflict, the order prevails for the matters it
+    covers.
+
+1.3 Each user of a paid plan may use the Software on up to two computers at a time,
+    and may move that right between computers from their account.
+
+1.4 The Software checks its licence with CostLike's licensing service at least once a
+    week while it is online. That check sends the information described in the
+    Software's Licence settings and in the privacy policy at
+    https://costlike.com/privacy/; it never sends cloud credentials or cost figures.
+
+1.5 You may make one copy of the installer for backup purposes.
+
+
+2. RESTRICTIONS
+
+Except as expressly permitted by this Agreement or by mandatory applicable law, you must
+not, and must not allow anyone else to:
+
+(a) copy, modify, translate or create derivative works of the Software;
+(b) reverse engineer, decompile, disassemble or otherwise attempt to derive the source
+    code, structure or algorithms of the Software, except to the extent that applicable
+    law (including Articles 5 and 6 of Directive 2009/24/EC) expressly permits this
+    notwithstanding a contractual prohibition, and then only for the purposes and under
+    the conditions that law sets out;
+(c) remove, bypass or defeat any technical protection, integrity check or licence
+    control in the Software;
+(d) sell, rent, lease, lend, sublicense, distribute, publish or otherwise make the
+    Software available to any third party, including as a hosted or managed service;
+(e) use the Software, or any knowledge obtained from examining it, to develop a
+    competing product;
+(f) remove or alter any copyright, trademark or proprietary notice in the Software.
+
+
+3. OWNERSHIP
+
+The Software, and all intellectual property rights in it, belong to us and our
+licensors. No rights are granted to you other than those expressly stated in this
+Agreement.
+
+
+4. YOUR CLOUD ACCOUNTS AND THIRD-PARTY CHARGES
+
+4.1 The Software runs on your computer and connects to cloud and service providers
+    (such as Amazon Web Services, Microsoft Azure, Google Cloud, Hetzner and GitHub)
+    using credentials you supply. You are responsible for having the right to use those
+    accounts and credentials.
+
+4.2 Some provider APIs are charged by the provider, not by us. For example, AWS bills
+    each Cost Explorer API request and Google bills BigQuery queries by the data they
+    scan. The Software shows these costs where it can and caches results to reduce them,
+    but any charges a provider makes for requests you initiate through the Software are
+    your responsibility.
+
+4.3 Figures shown by the Software are derived from provider data, published price lists
+    and information you enter. Run rates, forecasts and estimates are projections, not
+    invoices. The provider's own billing remains the authoritative record of what you
+    owe.
+
+
+5. YOUR DATA
+
+The Software stores your data, including credentials (encrypted with your operating
+system's facilities), cached cost data and any files you attach, on your own computer.
+We do not receive it. Our privacy notice is at https://costlike.com/privacy/.
+
+
+6. THIRD-PARTY COMPONENTS
+
+The Software includes open-source components, including Electron and Chromium, which are
+licensed to you under their own licences. Their notices are included in the installation
+folder (for example LICENSE.electron.txt and LICENSES.chromium.html). Nothing in this
+Agreement limits your rights under those licences.
+
+
+7. UPDATES AND SUPPORT
+
+We may provide updates at our discretion or as your order provides. Updates are covered
+by this Agreement unless they come with their own terms. Support, if any, is as stated
+in your order or on our website.
+
+
+8. WARRANTY DISCLAIMER
+
+To the maximum extent permitted by applicable law, the Software is provided "as is" and
+"as available", without warranties of any kind, express or implied, including warranties
+of merchantability, fitness for a particular purpose, accuracy and non-infringement. We
+do not warrant that the Software will be error-free or uninterrupted, or that any figure
+it shows is complete or correct.
+
+
+9. LIMITATION OF LIABILITY
+
+9.1 To the maximum extent permitted by applicable law, we will not be liable for any
+    indirect, incidental, special, consequential or punitive damages, or for any loss of
+    profits, revenue, data or business, or for charges made by third-party providers,
+    arising out of or in connection with the Software.
+
+9.2 To the maximum extent permitted by applicable law, our total liability arising out
+    of or in connection with the Software is limited to the amount you paid us for the
+    Software in the twelve months before the event giving rise to the claim, or EUR 100
+    if you paid nothing.
+
+9.3 Nothing in this Agreement limits liability that cannot be limited by law, including
+    liability for death or personal injury caused by negligence, for fraud, or for
+    intentional misconduct.
+
+
+10. CONSUMERS
+
+If you are a consumer, you have statutory rights that this Agreement does not affect.
+
+
+11. TERMINATION
+
+This Agreement continues until terminated. It ends automatically if you breach it. On
+termination you must stop using the Software and delete all copies. Sections 2, 3, 4.2,
+4.3 and 8 to 13 survive termination.
+
+
+12. GOVERNING LAW
+
+This Agreement is governed by the laws of the Republic of Estonia, excluding its
+conflict-of-law rules and the United Nations Convention on Contracts for the
+International Sale of Goods. The courts of Estonia have jurisdiction, without prejudice
+to any mandatory right a consumer has to bring proceedings in their country of residence.
+
+
+13. GENERAL
+
+If any provision of this Agreement is held unenforceable, the rest remains in effect.
+Our failure to enforce a provision is not a waiver. This Agreement, together with any
+order, is the entire agreement between you and us about the Software.
+
+
+CONTACT
+
+Cloud Certainty OU, Sepapaja tn 6, 15551 Tallinn, Estonia
+support@costlike.com
+
+Copyright (c) 2026 Cloud Certainty OU. All rights reserved.
