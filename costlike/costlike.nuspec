@@ -46,13 +46,15 @@ choco install costlike --params "'/CurrentUser'"
 ## Notes
 
 * The installer is downloaded from costlike.com at install time and verified
-  with pinned SHA256 checksums. See VERIFICATION.txt for details.
+  with pinned SHA256 checksums, which are also published with each release in
+  SHA256SUMS.txt on costlike.com.
 * ARM64 Windows gets the native ARM64 build; every other 64-bit Windows gets
   the x64 build. There is no 32-bit build.
 * Uninstalling leaves your local database and settings in place, because the
   cached cost history cost real money to build.
 * CostLike is proprietary software. By installing it you accept the CostLike
-  End User Licence Agreement, included in this package as LICENSE.txt.
+  End User Licence Agreement, which the installer ships beside the application
+  as resources\LICENSE.txt.
 ]]></description>
     <releaseNotes>https://costlike.com/download/</releaseNotes>
   </metadata>

@@ -33,49 +33,6 @@ function global:au_BeforeUpdate ($Package) {
     }
 }
 
-function global:au_AfterUpdate ($Package) {
-    $verification = @"
-VERIFICATION
-
-Verification is intended to assist the Chocolatey moderators and community
-in verifying that this package's contents are trustworthy.
-
-This package does not embed any binaries. The CostLike installer is
-downloaded directly from costlike.com at install time and verified with
-SHA256 checksums that are pinned inside tools\chocolateyinstall.ps1.
-CostLike is published by Cloud Certainty OU, who also maintain this package.
-
-Project:   https://costlike.com
-Downloads: https://costlike.com/download/
-Release:   v$($Latest.Version)
-
-URL    (x64):   $($Latest.URL64)
-SHA256 (x64):   $($Latest.Checksum64)
-
-URL    (arm64): $($Latest.URLArm64)
-SHA256 (arm64): $($Latest.ChecksumArm64)
-
-The same hashes are published with every release in:
-  $($Latest.ChecksumsUrl)
-
-To verify the checksums yourself, download each installer from the URL above
-and run the following in PowerShell, comparing the result with the value
-recorded above:
-
-  Get-FileHash -Algorithm SHA256 <path-to-downloaded-exe>
-
-The installers are Authenticode-signed by Cloud Certainty OU; check with:
-
-  Get-AuthenticodeSignature <path-to-downloaded-exe>
-
-The CostLike End User Licence Agreement is included in this package as
-LICENSE.txt. It is the same agreement the installer shows and ships beside
-the installed application as resources\LICENSE.txt.
-"@
-
-    Set-Content -Path (Join-Path $PSScriptRoot 'tools\VERIFICATION.txt') -Value $verification -Encoding utf8
-}
-
 function global:au_GetLatest {
     $headers = @{ 'User-Agent' = 'costlike-choco-au' }
 
@@ -110,7 +67,6 @@ function global:au_GetLatest {
         Checksum64     = $checksum64
         ChecksumType64 = 'sha256'
         ChecksumArm64  = $checksumArm64
-        ChecksumsUrl   = $checksumsUrl
     }
 }
 

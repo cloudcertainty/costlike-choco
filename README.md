@@ -102,7 +102,7 @@ workflow to re-push.
   installer from costlike.com at install time and verifies it with the pinned
   SHA256 checksums.
 - Uninstalling leaves the local database and settings in place.
-- CostLike is proprietary software, licensed under the
-  [End User Licence Agreement](./costlike/tools/LICENSE.txt). The copy here
-  comes from `build/license.txt` in the app repository; refresh it when the
-  agreement changes.
+- CostLike is proprietary software, licensed under its End User Licence
+  Agreement, which the installer ships as `resources\LICENSE.txt`.
+- No `LICENSE.txt` or `VERIFICATION.txt` in `tools/`: the Chocolatey moderators
+  asked for them to be left out, as the package embeds no binaries.
