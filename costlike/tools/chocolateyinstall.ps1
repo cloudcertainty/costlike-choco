@@ -1,11 +1,11 @@
 ﻿$ErrorActionPreference = 'Stop'
 
-$version = '0.11.0'
+$version = '0.11.2'
 
 $url64         = "https://costlike.com/api/download/v$version/CostLike-$version-x64-setup.exe"
-$checksum64    = '17ad755a5fa751c67edb59059a25116ad79817d37c80410259410e1c98cb94f3'
+$checksum64    = '04fa490b8a00e91fad11eb80edc20ae58fb0febef333961a2ee355bed4e4a80e'
 $urlArm64      = "https://costlike.com/api/download/v$version/CostLike-$version-arm64-setup.exe"
-$checksumArm64 = '8f4dc0e5f89b1804de2e8cde4a3564c71e6029da09392e1ab9383ab70a6cdf29'
+$checksumArm64 = '1243a195b84a0382804671f7ca08013d02822c2f877f0b6efeb9be118dd32cef'
 
 # The x64 and ARM64 builds are separate (the main process is compiled to CPU-specific
 # bytecode). Read the machine-level value: an emulated x64 shell on ARM64 reports AMD64
